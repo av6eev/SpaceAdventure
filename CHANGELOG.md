@@ -3,6 +3,12 @@
 
 ## [0.0.1] - 19.01.2023
 ### Добавлено:
+* Unity package Addressables.
+### Изменено:
+* Assembly Definition.
+
+## [0.0.1] - 19.01.2023
+### Добавлено:
 * Assembly Definition и подключение пакета SpaceAdventureLib.
 * Корневой раздел для кода игры.
 
