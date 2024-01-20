@@ -3,6 +3,18 @@
 
 ## [0.0.2] - 20.01.2023
 ### Добавлено:
+* Спецификации сцен. Созданы Json файл и ScriptableObject'ы для будущих сцен.
+* SpecificationScrObj\<T>. Содержит в себе T спецификацию для отображения ее в ScriptableObject.
+  * SceneSpecificationScrObj. Класс для создания ScriptableObject по спецификации SceneSpecification.
+* SpecificationCollectionScrObj\<T>. Содержит в себе коллекцию SpecificationScrObj\<T> для добавления необходимых спецификаций в коллекцию в ScriptableObject.
+  * SceneCollectionSpecificationScrObj. Класс для создания ScriptableObject коллекции спецификаций SceneSpecification.
+
+### Изменено:
+* CoreScene. Добавлен компонент Startup.
+* Startup. Добавлены необходимые методы Start и Update, Startup спецификация, а так же коллекции presenter'ов и updater'ов. 
+
+## [0.0.2] - 20.01.2023
+### Добавлено:
 * Основные будущие сцены для игры.
   * CoreScene - сцена, с которой запускается игра. На ней присутствует скрипт Startup, инициализирующий все необходимые механики.
   * HomeScene - сцена, которая будет автоматически запускаться после прогрузки CoreScene. Будет содержать интерфейс с кнопками настройки, выхода, быстрого запуска сессии и входа в док-локацию.

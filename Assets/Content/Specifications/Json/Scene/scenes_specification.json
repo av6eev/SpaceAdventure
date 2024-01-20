@@ -1,0 +1,19 @@
+﻿{
+  "scenes": [
+    {
+      "id": "dock_scene",
+      "scene_id": "dock_scene",
+      "prefab_id": "dock_game_view"
+    },
+    {
+      "id": "home_scene",
+      "scene_id": "home_scene",
+      "prefab_id": "home_game_view"
+    },
+    {
+      "id": "session_scene",
+      "scene_id": "session_scene",
+      "prefab_id": "session_game_view"
+    }
+  ]
+}
