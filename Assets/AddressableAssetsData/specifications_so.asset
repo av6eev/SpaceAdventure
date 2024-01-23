@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: specifications_so
+  m_EditorClassIdentifier: 
+  m_GroupName: specifications_so
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f164739372d92c84db440e5bcc95766f
+  m_SerializeEntries:
+  - m_GUID: 96c319aa43ed1e44ebdce6556f459806
+    m_Address: asteroids
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e7f09b8808f1f3b4f9e9b6d242d57f9b
+    m_Address: bullets
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46be188d056ac2c41be17524be7d8e2f
+    m_Address: ships
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 450dc0ff57b7d9d429ebe400f7cb1ac4
+    m_Address: weapons
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86c1e1db68be5f345a416607fedc7eda
+    m_Address: scenes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 12c31dc4631195f4e81421775378e7b8, type: 2}
+  m_SchemaSet:
+    m_Schemas: []
