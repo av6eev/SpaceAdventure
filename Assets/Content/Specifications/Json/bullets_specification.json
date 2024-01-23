@@ -1,0 +1,12 @@
+﻿{
+  "bullets": [
+    {
+      "id": "simple_bullet",
+      "damage": 20.0,
+      "max_health": 20.0,
+      "speed": 5.0,
+      "prefab_key_2d": "bullet_2d",
+      "prefab_key_3d": "bullet_3d"
+    }
+  ]
+}

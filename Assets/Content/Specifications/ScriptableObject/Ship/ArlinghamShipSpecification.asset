@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d1308ce4784ea2a4d862791c7fbf24, type: 3}
+  m_Name: ArlinghamShipSpecification
+  m_EditorClassIdentifier: 
+  Specification:
+    _id: arlingham_ship
+    Type: 2
+    Name: Arlingham
+    Description: In the wake of stunning discoveries in space, humanity has surpassed
+      itself. This ship had no equal in its time.
+    Price: 10
+    Health: 3
+    BulletCount: 8
+    ReloadTime: 0.8
+    ShootRate: 0.25
+    IsAutomatic: 0
+    Speed: 2.5
+    PrefabKey2D: 
+    PrefabKey3D: arlingham_3d
+    SpriteKey: arlingham_icon
+    RequirementId: arlingham_mc_requirement
+    YawTorque: 0
+    PitchTorque: 0
+    RollTorque: 0
+    Thrust: 0
+    UpThrust: 0
+    StrafeThrust: 0
+    ThrustGlideReduction: 0
+    UpDownGlideReduction: 0
+    LeftRightGlideReduction: 0
+    MaxBoostAmount: 0
+    BoostDeprecationRate: 0
+    BoostRechargeRate: 0
+    BoostMultiplier: 0

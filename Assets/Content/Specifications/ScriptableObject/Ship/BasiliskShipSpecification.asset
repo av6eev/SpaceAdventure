@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d1308ce4784ea2a4d862791c7fbf24, type: 3}
+  m_Name: BasiliskShipSpecification
+  m_EditorClassIdentifier: 
+  Specification:
+    _id: basilisk_ship
+    Type: 3
+    Name: Basilisk
+    Description: The need to collect data about the planets in the galaxy forced
+      scientists to develop a device capable of landing on the surface. This development
+      solved this problem and gave a huge boost to the science of the time.
+    Price: 20
+    Health: 3
+    BulletCount: 12
+    ReloadTime: 2
+    ShootRate: 0.2
+    IsAutomatic: 0
+    Speed: 3
+    PrefabKey2D: 
+    PrefabKey3D: basilisk_3d
+    SpriteKey: basilisk_icon
+    RequirementId: basilisk_mc_requirement
+    YawTorque: 0
+    PitchTorque: 0
+    RollTorque: 0
+    Thrust: 0
+    UpThrust: 0
+    StrafeThrust: 0
+    ThrustGlideReduction: 0
+    UpDownGlideReduction: 0
+    LeftRightGlideReduction: 0
+    MaxBoostAmount: 0
+    BoostDeprecationRate: 0
+    BoostRechargeRate: 0
+    BoostMultiplier: 0

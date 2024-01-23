@@ -1,0 +1,54 @@
+﻿{
+  "asteroids": [
+    {
+      "id": "small_asteroid",
+      "type": 1,
+      "health": 20.0,
+      "speed": 23.0,
+      "damage": 20.0,
+      "chance_to_spawn": 0.5,
+      "prefab_key_2d": "small_asteroid_2d",
+      "prefab_key_3d": "small_asteroid_3d",
+      "sub_asteroids_on_destroy" : []
+    },
+    {
+      "id": "medium_asteroid",
+      "type": 2,
+      "health": 60.0,
+      "speed": 20.0,
+      "damage": 60.0,
+      "chance_to_spawn": 0.4,
+      "prefab_key_2d": "medium_asteroid_2d",
+      "prefab_key_3d": "medium_asteroid_3d",
+      "sub_asteroids_on_destroy" : [
+        "small_asteroid_specification",
+        "small_asteroid_specification"
+      ]
+    },
+    {
+      "id": "big_asteroid",
+      "type": 3,
+      "health": 80.0,
+      "speed": 15.0,
+      "damage": 80.0,
+      "chance_to_spawn": 0.15,
+      "prefab_key_2d": "big_asteroid_2d",
+      "prefab_key_3d": "big_asteroid_3d",
+      "sub_asteroids_on_destroy" : [
+        "medium_asteroid_specification",
+        "medium_asteroid_specification"
+      ]
+    },
+    {
+      "id": "fire_asteroid",
+      "type": 4,
+      "health": 40.0,
+      "speed": 20.0,
+      "damage": 40.0,
+      "chance_to_spawn": 0.01,
+      "prefab_key_2d": "fire_asteroid_2d",
+      "prefab_key_3d": "fire_asteroid_3d",
+      "sub_asteroids_on_destroy" : []
+    }
+  ]
+}

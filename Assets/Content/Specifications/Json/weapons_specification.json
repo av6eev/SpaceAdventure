@@ -1,0 +1,15 @@
+﻿{
+  "weapons": [
+    {
+      "id": "simple_weapon",
+      "bullet_id": "simple_bullet",
+      "ammo_in_horn": 5,
+      "max_ammo": 10,
+      "damage": 20.0,
+      "reload_time": 2.0,
+      "fire_rate": 0.25,
+      "prefab_key_2d": "simple_weapon_2d",
+      "prefab_key_3d": "simple_weapon_3d"
+    }
+  ]
+}
