@@ -1,5 +1,10 @@
-﻿using Presenter;
+﻿using Loader.Object;
+using Loader.Scene;
+using Loaders.Addressable;
+using Loaders.Addressable.Scene;
+using Presenter;
 using Specification.Startup;
+using Specifications;
 using UnityEngine;
 using Updater;
 
@@ -13,8 +18,22 @@ public class Startup : MonoBehaviour
     private readonly UpdatersList _lateUpdatersList = new();
     private GameModel _gameModel;
     
-    private void Start()
+    private async void Start()
     {
+        var loadObjectsModel = new LoadObjectsModel(new AddressableObjectLoadWrapper());
+        var specifications = new GameSpecifications(_startupSpecification, loadObjectsModel);
+
+        _gameModel = new GameModel
+        {
+            UpdatersEngine = _updatersList,
+            FixedUpdatersEngine = _fixedUpdatersList,
+            LateUpdatersEngine = _lateUpdatersList,
+            LoadObjectsModel = loadObjectsModel,
+            Specifications = specifications
+        };
+            
+        _gameModel.LoadScenesModel = new LoadScenesModel(new AddressableSceneLoadWrapper(_gameModel));
+        await specifications.LoadAwaiter;
     }
     
     private void Update()
