@@ -9,14 +9,14 @@ namespace Loaders.Addressable.Scene
 {
     public class AddressableSceneLoadWrapperPresenter : IPresenter
     {
-        private readonly GameModel _environment;
+        private readonly GameModel _gameModel;
         private readonly AddressableSceneLoadWrapperModel _model;
         
         private readonly PresentersList _presenters = new();
         
-        public AddressableSceneLoadWrapperPresenter(GameModel environment, AddressableSceneLoadWrapperModel model)
+        public AddressableSceneLoadWrapperPresenter(GameModel gameModel, AddressableSceneLoadWrapperModel model)
         {
-            _environment = environment;
+            _gameModel = gameModel;
             _model = model;
         }
         
@@ -36,7 +36,7 @@ namespace Loaders.Addressable.Scene
 
         private void OnCompleted(AsyncOperationHandle<SceneInstance> op)
         {
-            new LocationLogicBuilder(_environment, _presenters, _model.LoadObjectToWrapperModel.Specification).Build();
+            new LocationLogicBuilder(_gameModel, _presenters, _model.LoadObjectToWrapperModel.Specification).Build();
             
             _presenters.Init();
 

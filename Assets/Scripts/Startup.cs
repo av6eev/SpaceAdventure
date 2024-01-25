@@ -3,6 +3,7 @@ using Loader.Scene;
 using Loaders.Addressable;
 using Loaders.Addressable.Scene;
 using Presenter;
+using SceneManagement;
 using Specification.Startup;
 using Specifications;
 using UnityEngine;
@@ -29,11 +30,16 @@ public class Startup : MonoBehaviour
             FixedUpdatersEngine = _fixedUpdatersList,
             LateUpdatersEngine = _lateUpdatersList,
             LoadObjectsModel = loadObjectsModel,
-            Specifications = specifications
+            Specifications = specifications,
+            SceneManagementModel = new SceneManagementModel(_startupSpecification.StartSceneSpecificationId)
         };
             
         _gameModel.LoadScenesModel = new LoadScenesModel(new AddressableSceneLoadWrapper(_gameModel));
+        
         await specifications.LoadAwaiter;
+        
+        _presenters.Add(new SceneManagementPresenter(_gameModel, (SceneManagementModel)_gameModel.SceneManagementModel));
+        _presenters.Init();
     }
     
     private void Update()
