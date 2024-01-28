@@ -3,6 +3,7 @@ using Loader.Scene;
 using Loaders.Addressable;
 using Loaders.Addressable.Scene;
 using Presenter;
+using Save;
 using SceneManagement;
 using Specification.Startup;
 using Specifications;
@@ -31,7 +32,8 @@ public class Startup : MonoBehaviour
             LateUpdatersEngine = _lateUpdatersList,
             LoadObjectsModel = loadObjectsModel,
             Specifications = specifications,
-            SceneManagementModel = new SceneManagementModel(_startupSpecification.StartSceneSpecificationId)
+            SceneManagementModel = new SceneManagementModel(_startupSpecification.StartSceneSpecificationId),
+            SaveModel = new SaveModel()
         };
             
         _gameModel.LoadScenesModel = new LoadScenesModel(new AddressableSceneLoadWrapper(_gameModel));
@@ -39,6 +41,7 @@ public class Startup : MonoBehaviour
         await specifications.LoadAwaiter;
         
         _presenters.Add(new SceneManagementPresenter(_gameModel, (SceneManagementModel)_gameModel.SceneManagementModel));
+        _presenters.Add(new SavePresenter(_gameModel, (SaveModel)_gameModel.SaveModel));
         _presenters.Init();
     }
     

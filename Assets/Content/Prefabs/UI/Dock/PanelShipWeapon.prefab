@@ -645,6 +645,7 @@ GameObject:
   - component: {fileID: 7350615184875757764}
   - component: {fileID: 7350615184875757766}
   - component: {fileID: 7350615184875757765}
+  - component: {fileID: 6502043491400195498}
   m_Layer: 5
   m_Name: PanelShipWeapon
   m_TagString: Untagged
@@ -717,6 +718,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6502043491400195498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7350615184875757763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dffc88e1fc841c0ae4d19592fdef364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TitleText: {fileID: 3436728511591581923}
+  DescriptionText: {fileID: 3854642024244883279}
+  PriceTxt: {fileID: 4913103802707235099}
+  BulletsTypeText: {fileID: 3302633309658831680}
+  Image: {fileID: 7350615184125769816}
 --- !u!1 &7350615184912614435
 GameObject:
   m_ObjectHideFlags: 0

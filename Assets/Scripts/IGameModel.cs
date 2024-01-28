@@ -1,5 +1,6 @@
 ﻿using Loader.Object;
 using Loader.Scene;
+using Save;
 using SceneManagement;
 using Specifications;
 using Updater;
@@ -13,4 +14,5 @@ public interface IGameModel : IBaseGameModel
     ILoadScenesModel LoadScenesModel { get; }
     IGameSpecifications Specifications { get; }
     ISceneManagementModel SceneManagementModel { get; }
+    ISaveModel SaveModel { get; }
 }

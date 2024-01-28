@@ -1,4 +1,5 @@
-﻿using Home;
+﻿using Dock;
+using Home;
 using Presenter;
 using Specification.Scene;
 using UnityEngine;
@@ -25,6 +26,8 @@ namespace LocationBuilder
             switch (_specification.SceneId)
             {
                 case "dock_scene":
+                    var dockView = (DockSceneView)sceneView;
+                    _presenters.Add(new DockPresenter(new DockLocationGameModel(_gameModel), dockView));
                     break;
                 case "home_scene":
                     var homeView = (HomeSceneView)sceneView;

@@ -1853,6 +1853,7 @@ GameObject:
   - component: {fileID: 7350615184875757764}
   - component: {fileID: 7350615184875757766}
   - component: {fileID: 7350615184875757765}
+  - component: {fileID: 5319652868921134895}
   m_Layer: 5
   m_Name: "PanelShip\u0421haracteristics"
   m_TagString: Untagged
@@ -1933,6 +1934,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5319652868921134895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7350615184875757763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0a7630508e403f889f9df49ad40a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TitleText: {fileID: 3436728511591581923}
+  SpeedText: {fileID: 9034366265986413799}
+  HealthText: {fileID: 7331642989845882666}
+  BulletsText: {fileID: 3678106119688469224}
+  ReloadTimeText: {fileID: 1965538473850524972}
+  ShootRateText: {fileID: 1136949871907542833}
+  AutomaticText: {fileID: 7039402453358942442}
 --- !u!1 &8238197622955912870
 GameObject:
   m_ObjectHideFlags: 0

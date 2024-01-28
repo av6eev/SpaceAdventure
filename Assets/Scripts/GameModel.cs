@@ -1,5 +1,6 @@
 ﻿using Loader.Object;
 using Loader.Scene;
+using Save;
 using SceneManagement;
 using Specifications;
 using Updater;
@@ -13,7 +14,8 @@ public class GameModel : IGameModel
     public IGameSpecifications Specifications { get; set; }
     public ILoadScenesModel LoadScenesModel { get; set; }
     public ISceneManagementModel SceneManagementModel { get; set; }
-    
+    public ISaveModel SaveModel { get; set; }
+
     public GameModel() {}
     
     protected GameModel(IGameModel gameModel)
@@ -24,5 +26,7 @@ public class GameModel : IGameModel
         LateUpdatersEngine = gameModel.LateUpdatersEngine;
         LoadObjectsModel = gameModel.LoadObjectsModel;
         LoadScenesModel = gameModel.LoadScenesModel;
+        SceneManagementModel = gameModel.SceneManagementModel;
+        SaveModel = gameModel.SaveModel;
     }
 }

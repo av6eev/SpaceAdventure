@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 224233101951512894}
   - component: {fileID: 114591183772582858}
   - component: {fileID: 95582761661926802}
+  - component: {fileID: 4619630073267245804}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -891,6 +892,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4619630073267245804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273332126664158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0eb9f0ab5a461b8326876a94077b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayButton: {fileID: 114591183772582858}
+  SwitchToSceneId: session_scene
 --- !u!1 &1313147330497386
 GameObject:
   m_ObjectHideFlags: 0
