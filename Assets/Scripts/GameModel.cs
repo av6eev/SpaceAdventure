@@ -1,4 +1,5 @@
-﻿using Loader.Object;
+﻿using Input;
+using Loader.Object;
 using Loader.Scene;
 using Save;
 using SceneManagement;
@@ -15,6 +16,7 @@ public class GameModel : IGameModel
     public ILoadScenesModel LoadScenesModel { get; set; }
     public ISceneManagementModel SceneManagementModel { get; set; }
     public ISaveModel SaveModel { get; set; }
+    public IInputModel InputModel { get; set; }
 
     public GameModel() {}
     
@@ -28,5 +30,6 @@ public class GameModel : IGameModel
         LoadScenesModel = gameModel.LoadScenesModel;
         SceneManagementModel = gameModel.SceneManagementModel;
         SaveModel = gameModel.SaveModel;
+        InputModel = gameModel.InputModel;
     }
 }

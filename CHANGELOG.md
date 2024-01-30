@@ -3,6 +3,18 @@
 
 ## [0.0.4] - 30.01.2023
 ### Добавлено:
+* MVP Input связка. Содержит информацию о текущем вводе пользователя. View имеет в себе события, которые срабатывают при любом вводе пользователя из InputActionAsset. Presenter обрабатывает эти ивенты и устанавливает данные в модель. 
+* SessionSetupInputPresenter. Presenter, отвечающий за инициализацию MVP Input связки, которая считывает ввод пользователя. Создает связку, в зависимости от текущей платформы игрока.
+* Префаб WindowsInputView.
+
+### Изменено:
+* Addressables. Добавлен ключ для префаба WindowsInputView.
+* AssemblyDefinition. Добавлена зависимость Unity.InputSystem.
+* GameModel. Добавлен интерфейс IInputModel.
+* SessionPresenter. Добавлена инициализация SessionSetupInputPresenter.
+
+## [0.0.4] - 30.01.2023
+### Добавлено:
 * SessionLocationGameModel. Класс-наследник GameModel, оперирующий данными внутри Session локации.
 * SessionPresenter. Верхнеуровневый presenter для Session локации, запускающий все необходимые сущности.
 * SessionSceneView. Верхнеуровневая view для Session локации, содержащая все необходимые view.

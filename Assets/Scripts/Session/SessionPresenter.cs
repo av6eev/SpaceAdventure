@@ -1,4 +1,5 @@
 ﻿using Presenter;
+using Session.Setup;
 
 namespace Session
 {
@@ -17,9 +18,12 @@ namespace Session
             _view = view;
         }
 
-        public void Init()
+        public async void Init()
         {
-            
+            var inputPresenter = new SessionSetupInputPresenter(_gameModel, _presenters, _view);
+            inputPresenter.Init();
+            await inputPresenter.LoadAwaiter;
+            inputPresenter.Dispose();
         }
 
         public void Dispose()
