@@ -1,6 +1,7 @@
 ﻿using Dock;
 using Home;
 using Presenter;
+using Session;
 using Specification.Scene;
 using UnityEngine;
 
@@ -34,6 +35,8 @@ namespace LocationBuilder
                     _presenters.Add(new HomePresenter(new HomeLocationGameModel(_gameModel), homeView));
                     break;
                 case "session_scene":
+                    var sessionView = (SessionSceneView)sceneView;
+                    _presenters.Add(new SessionPresenter(new SessionLocationGameModel(_gameModel), new SessionModel(), sessionView));
                     break;
             }
         }
