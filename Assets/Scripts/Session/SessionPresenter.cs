@@ -1,4 +1,5 @@
-﻿using Presenter;
+﻿using AreaBorders;
+using Presenter;
 using Session.Setup;
 
 namespace Session
@@ -20,6 +21,8 @@ namespace Session
 
         public async void Init()
         {
+            _gameModel.AreaBordersModel = new SessionAreaBordersModel();
+            
             var inputPresenter = new SessionSetupInputPresenter(_gameModel, _presenters, _view);
             inputPresenter.Init();
             await inputPresenter.LoadAwaiter;
@@ -29,6 +32,10 @@ namespace Session
             shipPresenter.Init();
             await shipPresenter.LoadAwaiter;
             shipPresenter.Dispose();
+            
+            var utilitiesPresenter = new SessionSetupUtilitiesPresenter(_gameModel, _presenters, _view);
+            utilitiesPresenter.Init();
+            _presenters.Add(utilitiesPresenter);
         }
 
         public void Dispose()

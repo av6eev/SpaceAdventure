@@ -1,4 +1,5 @@
 ﻿using System;
+using CameraView.Ship;
 using Entities.Ship;
 using Input;
 using LocationBuilder;
@@ -8,9 +9,10 @@ namespace Session
 {
     public class SessionSceneView : LocationSceneView, ISessionSceneView
     {
+        public ShipCameraView ShipCameraViewGo;
         public Transform ShipSpawnPoint;
-        public ShipView ShipViewGo { get; private set; }
-        
+
+        public IShipCameraView ShipCameraView => ShipCameraViewGo;
         public IShipView ShipView { get; private set; }
 
         public IShipView InstantiateShip(GameObject go)
@@ -28,7 +30,7 @@ namespace Session
             rb.angularDrag = .5f;
             rb.interpolation = RigidbodyInterpolation.Interpolate;
 
-            return ShipView = ShipViewGo = shipView;
+            return ShipView = shipView;
         }
 
         public T InstantiateInput<T>() where T : Component, IInputView
@@ -38,6 +40,11 @@ namespace Session
             inputView.transform.SetParent(transform);
             
             return inputView;
+        }
+
+        public void SetupCamera()
+        {
+            ShipCameraViewGo.Target = (ShipView)ShipView;
         }
     }
 }
