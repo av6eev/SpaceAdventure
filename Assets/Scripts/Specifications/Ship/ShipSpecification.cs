@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entities.Ship;
 using SimpleJson;
 
 namespace Specifications.Ship

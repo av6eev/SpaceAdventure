@@ -1,4 +1,5 @@
-﻿using Input;
+﻿using Entities.Ship;
+using Input;
 using Loader.Object;
 using Loader.Scene;
 using Save;
@@ -17,6 +18,7 @@ public class GameModel : IGameModel
     public ISceneManagementModel SceneManagementModel { get; set; }
     public ISaveModel SaveModel { get; set; }
     public IInputModel InputModel { get; set; }
+    public IShipModel ShipModel { get; set; }
 
     public GameModel() {}
     
@@ -31,5 +33,6 @@ public class GameModel : IGameModel
         SceneManagementModel = gameModel.SceneManagementModel;
         SaveModel = gameModel.SaveModel;
         InputModel = gameModel.InputModel;
+        ShipModel = gameModel.ShipModel;
     }
 }

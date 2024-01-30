@@ -1,4 +1,5 @@
-﻿using Input;
+﻿using Entities.Ship;
+using Input;
 using Loader.Object;
 using Loader.Scene;
 using Save;
@@ -17,4 +18,5 @@ public interface IGameModel : IBaseGameModel
     ISceneManagementModel SceneManagementModel { get; }
     ISaveModel SaveModel { get; }
     IInputModel InputModel { get; }
+    IShipModel ShipModel { get; }
 }

@@ -24,6 +24,11 @@ namespace Session
             inputPresenter.Init();
             await inputPresenter.LoadAwaiter;
             inputPresenter.Dispose();
+            
+            var shipPresenter = new SessionSetupShipPresenter(_gameModel, _presenters, _view);
+            shipPresenter.Init();
+            await shipPresenter.LoadAwaiter;
+            shipPresenter.Dispose();
         }
 
         public void Dispose()
