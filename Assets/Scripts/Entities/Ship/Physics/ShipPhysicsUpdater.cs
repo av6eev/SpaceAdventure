@@ -36,8 +36,8 @@ namespace Entities.Ship.Physics
             UpDownUpdate(deltaTime);
             StrafeUpdate(deltaTime);
 
-            _shipModel.CurrentSpeed.Value = _shipView.GetSpeed();
-            _shipModel.Position.Value = _shipView.GetPosition();
+            _shipModel.CurrentSpeed.Value = _shipView.Speed;
+            _shipModel.Position.Value = _shipView.Position;
             _shipModel.CurrentBoostAmount.Value = _boostAmount;
         }
 
