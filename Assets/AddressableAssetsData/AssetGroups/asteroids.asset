@@ -22,18 +22,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 70d17a4e84c9c5a499db1525468f76b4
+  - m_GUID: b72ac11510dd2774b93becae2649fb97
     m_Address: fire_asteroid_3d
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 23a3d1477b648a44c909c623874a312a
-    m_Address: medium_asteroid_3d
+  - m_GUID: 9d8512a01a067ef4689ee1609cb7ddab
+    m_Address: small_asteroid_3d
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 89e47e3dfd1c4ca4db8281832c513da1
-    m_Address: small_asteroid_3d
+  - m_GUID: 4fdb0d0d430dba34fa6f5a14b54262f4
+    m_Address: medium_asteroid_3d
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
