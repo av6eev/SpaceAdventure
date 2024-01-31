@@ -36,6 +36,11 @@ namespace Session
             var utilitiesPresenter = new SessionSetupUtilitiesPresenter(_gameModel, _presenters, _view);
             utilitiesPresenter.Init();
             _presenters.Add(utilitiesPresenter);
+            
+            var asteroidsPresenter = new SessionSetupAsteroidsPresenter(_gameModel, _presenters, _view);
+            asteroidsPresenter.Init();
+            await asteroidsPresenter.LoadAwaiter;
+            asteroidsPresenter.Dispose();
         }
 
         public void Dispose()
