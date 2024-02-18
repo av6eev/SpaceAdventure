@@ -2,6 +2,6 @@
 {
     public interface IShipCameraView : ICameraView
     {
-        
+        float GetRandomPointInCameraHeight();
     }
 }

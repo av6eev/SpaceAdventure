@@ -18,24 +18,10 @@ namespace CameraView.Ship
         
         public void Init()
         {
-            _model.CurrentPositionFollowStrength.OnChanged += ChangePositionFollowStrength;
-            _model.CurrentRotationFollowStrength.OnChanged += ChangeRotationFollowStrength;
         }
 
         public void Dispose()
         {
-            _model.CurrentPositionFollowStrength.OnChanged -= ChangePositionFollowStrength;
-            _model.CurrentRotationFollowStrength.OnChanged -= ChangeRotationFollowStrength;
-        }
-
-        private void ChangeRotationFollowStrength(float value)
-        {
-            _view.RotationFollowStrength = value;
-        }
-
-        private void ChangePositionFollowStrength(float value)
-        {
-            _view.PositionFollowStrength = value;
         }
     }
 }

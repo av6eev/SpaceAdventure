@@ -1,5 +1,6 @@
 ﻿using System;
 using Entities.Ship;
+using UnityEngine;
 using Updater;
 
 namespace CameraView.Ship
@@ -19,21 +20,21 @@ namespace CameraView.Ship
         
         public void Update(float deltaTime)
         {
-            MoveUpdate();
+            MoveUpdate(deltaTime);
             RotateUpdate();
         }
 
         private void RotateUpdate()
         {
-            _shipCameraView.Rotate();
+            var newRotation = Quaternion.Lerp(_shipCameraView.Rotation, _shipView.Rotation, _shipCameraView.RotationFollowStrength);
+            _shipCameraView.Rotate(newRotation);
         }
 
-        private void MoveUpdate()
+        private void MoveUpdate(float deltaTime)
         {
-            var spinLateralOffset = -_shipView.CameraTargetInverseTransformDirection.z;
-            var yawLateralOffset = _shipView.CameraTargetInverseTransformDirection.y;
+            float currentPositionFollowStrength;
+            
             var shipSpeed = _shipView.Speed;
-
             var firstSpeed = 40f;
             var secondSpeed = 65f;
             var thirdSpeed = 80f;
@@ -43,22 +44,27 @@ namespace CameraView.Ship
             
             if (absX > thirdSpeed || absY > thirdSpeed || absZ > thirdSpeed)
             {
-                _shipCameraModel.CurrentPositionFollowStrength.Value = .2f;
+                currentPositionFollowStrength = 1f;
             }
             else if (absX > secondSpeed || absY > secondSpeed || absZ > secondSpeed)
             {
-                _shipCameraModel.CurrentPositionFollowStrength.Value = .3f;
+                currentPositionFollowStrength = .9f;
             }
             else if (absX > firstSpeed || absY > firstSpeed || absZ > firstSpeed)
             {
-                _shipCameraModel.CurrentPositionFollowStrength.Value = .4f;
+                currentPositionFollowStrength = .8f;
             }
             else
             {
-                _shipCameraModel.CurrentPositionFollowStrength.Value = _shipCameraModel.InitialPositionFollowStrength;
+                currentPositionFollowStrength = _shipCameraModel.InitialPositionFollowStrength;
             }
 
-            _shipCameraView.Follow(spinLateralOffset, yawLateralOffset);
+            _shipCameraView.PositionFollowStrength = Mathf.Lerp(_shipCameraView.PositionFollowStrength, currentPositionFollowStrength, deltaTime);
+
+            var newTargetPosition = _shipView.TransformPoint(new Vector3(_shipCameraView.SpinOffset * -_shipView.CameraTargetInverseTransformDirection.z + _shipCameraView.YawOffset * _shipView.CameraTargetInverseTransformDirection.y, 0f, 0f));
+            var lerpedNewPosition = Vector3.Lerp(_shipView.Position, newTargetPosition, _shipCameraView.PositionFollowStrength);
+            
+            _shipCameraView.Follow(lerpedNewPosition);
         }
     }
 }
