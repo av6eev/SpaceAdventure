@@ -10,6 +10,6 @@ namespace Entities.Asteroids.Pull
         IPull<IAsteroidView> BigAsteroidPull { get; }
         IPull<IAsteroidView> FireAsteroidPull { get; }
 
-        IPull<IAsteroidView> GetById(string key);
+        IPull<IAsteroidView> this[string key] { get; }
     }
 }

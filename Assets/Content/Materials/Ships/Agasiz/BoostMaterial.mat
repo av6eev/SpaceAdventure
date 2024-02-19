@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Noise:
-        m_Texture: {fileID: 2800000, guid: 7265e58ae90d93b4aa6dab198b909e40, type: 3}
+        m_Texture: {fileID: 2800000, guid: ff293f46aeaa72443aa268432fb7cf62, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _VertexNoise:
@@ -49,12 +49,12 @@ Material:
     - _AlphaClip: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Size: 1e-45
+    - _Size: 0.30001464
     - _Speed: 1
     m_Colors:
     - _Color: {r: 0.2883008, g: 1.4054664, b: 3.4415908, a: 0}
     - _SizeAmount: {r: 11, g: 0.8, b: 0, a: 0}
-    - _Speed: {r: 0, g: -0.6000001, b: 0, a: 0}
+    - _Speed: {r: 0, g: -1.0003194, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5073113298652570309
 MonoBehaviour:

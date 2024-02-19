@@ -31,8 +31,17 @@ namespace Entities.Asteroids.Asteroid.Physics
     
         public void Update(float deltaTime)
         {
-            MoveUpdate(deltaTime);
-            RotateUpdate(deltaTime);
+            if (_asteroidModel.IsVisibleFromCamera)
+            {
+                // MoveUpdate(deltaTime);
+                // RotateUpdate(deltaTime);    
+            }
+
+            if (!_asteroidModel.IsDisabled)
+            {
+                _asteroidModel.Position.Value = _asteroidView.Position;
+            }
+
             VisibilityUpdate();
         }
 
@@ -44,7 +53,6 @@ namespace Entities.Asteroids.Asteroid.Physics
         private void MoveUpdate(float deltaTime)
         {
             _asteroidView.Move(_thrustSpeed * deltaTime);
-            _asteroidModel.Position.Value = _asteroidView.Position;
         }
 
         private void RotateUpdate(float deltaTime)

@@ -20,8 +20,9 @@ namespace Entities.Asteroids.Pull
         
         protected override IAsteroidView CreateElement()
         {
-            var go = Object.Instantiate(Element, _root);
-            return go.GetComponent<IAsteroidView>();
+            var go = Object.Instantiate(Element, _root).GetComponent<IAsteroidView>();
+            ModifyPutObject(go);
+            return go;
         }
 
         protected override void RemoveElement(IAsteroidView element)
@@ -29,7 +30,15 @@ namespace Entities.Asteroids.Pull
             Object.Destroy(element as MonoBehaviour);
         }
 
-        protected override void ModifyPutObject(IAsteroidView element) => element.Hide();
-        protected override void ModifyGetObject(IAsteroidView element) => element.Show();
+        protected override void ModifyPutObject(IAsteroidView element)
+        {
+            element.Hide();
+            // element.ResetPosition();
+        }
+
+        protected override void ModifyGetObject(IAsteroidView element)
+        {
+            element.Show();
+        }
     }
 }

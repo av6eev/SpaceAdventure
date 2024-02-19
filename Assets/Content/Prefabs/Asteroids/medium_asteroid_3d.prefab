@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8941235540954918925}
   - component: {fileID: 7876638835519938277}
   - component: {fileID: 3945174368312720034}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Asteroid_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1087126950865321872}
   - component: {fileID: 1826099920119979891}
   - component: {fileID: 8805672499746291858}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Asteroid_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 2677227773133320479}
   - component: {fileID: 2123106655753518720}
   - component: {fileID: 3039464465359878016}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Asteroid_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1804374360529353527}
   - component: {fileID: 6771028456606442580}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 4948391184996796765}
   - component: {fileID: 6285957399024987590}
   - component: {fileID: 198704604428444435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: medium_asteroid_3d
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 3971136567154729086}
   - component: {fileID: 7180705119813801312}
   - component: {fileID: 4206632806145958045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Asteroid_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
