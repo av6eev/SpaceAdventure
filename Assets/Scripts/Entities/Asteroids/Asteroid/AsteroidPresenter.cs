@@ -1,8 +1,10 @@
-﻿using Entities.Asteroids.Asteroid.Damage;
+﻿using Chunk.Collection;
+using Entities.Asteroids.Asteroid.Damage;
 using Entities.Asteroids.Asteroid.Physics;
 using Presenter;
 using Pulls;
 using Session;
+using UnityEngine;
 
 namespace Entities.Asteroids.Asteroid
 {
@@ -25,25 +27,49 @@ namespace Entities.Asteroids.Asteroid
 
         public void Init()
         {
+            _model.IsDisabled = false;
             _view = _pull.Get();
-            _view.Position = _gameModel.ShipCameraView.GetRandomPointInCameraView(_gameModel.AreaBordersModel.ForwardBorder.Value, 20f, 20f, 450f);
-            _model.Position.Value = _view.Position;
+            
+            if (_model.Position.Value == Vector3.zero)
+            {
+                _view.Position = GetRandomPointInChunk();
+                _model.Position.Value = _view.Position;
+            }
+            else
+            {
+                _view.Position = _model.Position.Value;
+            }
             
             _presenters.Add(new AsteroidDamagePresenter(_gameModel, _model, _view));
             _presenters.Init();
 
             _physicsUpdater = new AsteroidPhysicsUpdater(_model, _view, _gameModel.ShipCameraView);
-            _gameModel.UpdatersEngine.Add(_physicsUpdater);
+            _gameModel.FixedUpdatersEngine.Add(_physicsUpdater);
         }
 
         public void Dispose()
         {
-            _gameModel.UpdatersEngine.Remove(_physicsUpdater);
-        
+            _model.IsDisabled = true;
+            
+            _gameModel.FixedUpdatersEngine.Remove(_physicsUpdater);
+            _physicsUpdater = null;
+
             _presenters.Dispose();
             _presenters.Clear();
 
             _pull.Put(_view);
+        }
+
+        private Vector3 GetRandomPointInChunk()
+        {
+            var chunkPosition = _gameModel.ChunkCollection.Chunks[_model.ChunkId].Position;
+            var sizedChunkPosition = chunkPosition + new Vector2(ChunkCollection.ChunkSize.x, ChunkCollection.ChunkSize.z);
+            
+            var xPoint = Random.Range(chunkPosition.x, sizedChunkPosition.x);
+            var yPoint = _gameModel.ShipCameraView.GetRandomPointInCameraHeight();
+            var zPoint = Random.Range(chunkPosition.y, sizedChunkPosition.y);
+            
+            return new Vector3(xPoint, yPoint, zPoint);
         }
     }
 }

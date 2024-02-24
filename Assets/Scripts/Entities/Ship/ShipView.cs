@@ -9,10 +9,34 @@ namespace Entities.Ship
         public Transform BulletSpawnPoint;
         public Material BoostMaterial;
 
-        public Vector3 Speed => Rigidbody.velocity;
         public Vector3 Position => transform.position;
-        public Vector3 CameraTargetInverseTransformDirection => CameraLockGo.transform.InverseTransformDirection(Rigidbody.angularVelocity);
-        
+        public Quaternion Rotation => transform.rotation;
+
+        public Vector3 Speed
+        {
+            get
+            {
+                if (Rigidbody != null)
+                {
+                    return Rigidbody.velocity;
+                }
+
+                return Vector3.zero;
+            }
+        }
+        public Vector3 CameraTargetInverseTransformDirection
+        {
+            get
+            {
+                if (Rigidbody != null)
+                {
+                    return CameraLockGo.transform.InverseTransformDirection(Rigidbody.angularVelocity);
+                }
+
+                return Vector3.zero;
+            }
+        }
+
         private static readonly int SpeedProperty = Shader.PropertyToID("_Speed");
         private static readonly int SizeProperty = Shader.PropertyToID("_Size");
 
@@ -39,6 +63,16 @@ namespace Entities.Ship
         public void ChangeBoostEffectSize(float size)
         {
             BoostMaterial.SetFloat(SizeProperty, Mathf.Lerp(BoostMaterial.GetFloat(SizeProperty), size, 0.4f));
+        }
+
+        public Vector3 TransformDirection(Vector3 vector)
+        {
+            return transform.TransformDirection(vector);
+        }
+
+        public Vector3 TransformPoint(Vector3 point)
+        {
+            return CameraLockGo.transform.TransformPoint(point);
         }
     }
 }

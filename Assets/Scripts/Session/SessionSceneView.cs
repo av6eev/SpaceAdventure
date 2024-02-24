@@ -1,5 +1,6 @@
 ﻿using System;
 using CameraView.Ship;
+using Chunk.Collection;
 using Entities.Ship;
 using Input;
 using LocationBuilder;
@@ -10,9 +11,11 @@ namespace Session
     public class SessionSceneView : LocationSceneView, ISessionSceneView
     {
         public ShipCameraView ShipCameraViewGo;
+        public ChunkCollectionView ChunkCollectionViewGo;
         public Transform ShipSpawnPoint;
 
         public IShipCameraView ShipCameraView => ShipCameraViewGo;
+        public IChunkCollectionView ChunkCollectionView => ChunkCollectionViewGo;
         public IShipView ShipView { get; private set; }
 
         public IShipView InstantiateShip(GameObject go)
@@ -44,7 +47,7 @@ namespace Session
 
         public void SetupCamera()
         {
-            ShipCameraViewGo.Target = (ShipView)ShipView;
+            ShipCameraViewGo.Target = ShipView;
         }
     }
 }

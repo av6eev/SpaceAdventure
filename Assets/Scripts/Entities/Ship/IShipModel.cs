@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Entities.Ship
 {
-    public interface IShipModel : IEntity, IMovable 
+    public interface IShipModel : IEntity 
     {
         ShipSpecification Specification { get; }
         ReactiveField<Vector3> CurrentSpeed { get; }

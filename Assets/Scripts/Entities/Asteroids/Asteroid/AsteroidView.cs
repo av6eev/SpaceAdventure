@@ -8,9 +8,9 @@ namespace Entities.Asteroids.Asteroid
         public Rigidbody Rigidbody;
         public MeshRenderer[] MeshRenderers;
         public Collider Collider;
-        
-        public Vector3 Position 
-        { 
+
+        public Vector3 Position
+        {
             get => transform.position;
             set => transform.position = value;
         }
@@ -33,18 +33,16 @@ namespace Entities.Asteroids.Asteroid
             }
             
             Collider.enabled = true;
-            transform.position = Vector3.zero;
         }
 
         public void Hide()
         {
             foreach (var meshRenderer in MeshRenderers)
             {
-                meshRenderer.enabled = false;
+               meshRenderer.enabled = false;
             }
             
             Collider.enabled = false;
-            transform.position = Vector3.zero;
         }
 
         public void Rotate(Vector3 torque)

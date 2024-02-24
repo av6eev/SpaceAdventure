@@ -1,5 +1,4 @@
-﻿using System;
-using ReactiveField;
+﻿using ReactiveField;
 using Specifications.Ship;
 using UnityEngine;
 

@@ -34,20 +34,25 @@ namespace Session.Setup
                 {
                     case "small_asteroid":
                         pullCollection.SmallAsteroidPull = new AsteroidsPull(asteroidGo.Result);
+                        pullCollection.SmallAsteroidPull.Init(30);
                         break;
                     case "medium_asteroid":
                         pullCollection.MediumAsteroidPull = new AsteroidsPull(asteroidGo.Result);
+                        pullCollection.MediumAsteroidPull.Init(15);
                         break;
                     case "big_asteroid":
                         pullCollection.BigAsteroidPull = new AsteroidsPull(asteroidGo.Result);
+                        pullCollection.BigAsteroidPull.Init(15);
                         break;
                     case "fire_asteroid":
                         pullCollection.FireAsteroidPull = new AsteroidsPull(asteroidGo.Result);
+                        pullCollection.FireAsteroidPull.Init(10);
                         break;
                 }
             }
 
-            var asteroidsCollectionPresenter = new AsteroidsCollectionPresenter(_gameModel, new AsteroidsCollection(_gameModel.Specifications.AsteroidSpecifications.GetSpecifications()), pullCollection);
+            _gameModel.AsteroidsCollection = new AsteroidsCollection(_gameModel.Specifications.AsteroidSpecifications.GetSpecifications());
+            var asteroidsCollectionPresenter = new AsteroidsCollectionPresenter(_gameModel, (AsteroidsCollection)_gameModel.AsteroidsCollection, pullCollection);
             asteroidsCollectionPresenter.Init();
             _presenters.Add(asteroidsCollectionPresenter);
             

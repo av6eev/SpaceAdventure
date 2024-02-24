@@ -30,7 +30,7 @@ namespace Session.Setup
             _presentersList.Add(shipCameraPresenter);
             
             _shipCameraUpdater = new ShipCameraFollowUpdater(_gameModel.ShipCameraModel, _view.ShipCameraView, _view.ShipView);
-            _bordersUpdater = new SessionAreaBordersUpdater(_gameModel, _view.ShipView, (SessionAreaBordersModel)_gameModel.AreaBordersModel);
+            _bordersUpdater = new SessionAreaBordersUpdater(_view.ShipView, (SessionAreaBordersModel)_gameModel.AreaBordersModel);
             
             _gameModel.LateUpdatersEngine.Add(_shipCameraUpdater);
             _gameModel.UpdatersEngine.Add(_bordersUpdater);

@@ -1,67 +1,42 @@
-﻿using System.Collections.Generic;
-using Entities.Asteroids.Asteroid;
-using Specifications.Asteroid;
-using UnityEngine;
+﻿using Specifications.Asteroid;
 using Updater;
+using Random = UnityEngine.Random;
 
 namespace Entities.Asteroids.Collection
 {
     public class AsteroidsCollectionUpdater : IUpdater
     {
-        private readonly IGameModel _gameModel;
         private readonly AsteroidsCollection _model;
-
-        private readonly List<AsteroidModel> _inactiveModels = new();
-        private int _toCreateModelsCount;
         
-        public AsteroidsCollectionUpdater(IGameModel gameModel, AsteroidsCollection model)
+        private int _toCreateCount;
+        private float _timeToSpawn;
+
+        public AsteroidsCollectionUpdater(AsteroidsCollection model)
         {
-            _gameModel = gameModel;
             _model = model;
         }
         
         public void Update(float deltaTime)
         {
-            RemoveInactiveAsteroids();
-            CreateMissingAsteroids();
+            CreateMissingAsteroidsUpdate(deltaTime);
         }
 
-        private void CreateMissingAsteroids()
+        private void CreateMissingAsteroidsUpdate(float deltaTime)
         {
-            var activeAsteroidsCount = _model.ActiveAsteroids.Count;
-
-            if (activeAsteroidsCount >= _model.MaxCount) return;
-            
-            _toCreateModelsCount = _model.MaxCount - activeAsteroidsCount;
-
-            if (_toCreateModelsCount == 0) return;
-
-            for (var i = 0; i < _toCreateModelsCount; i++)
+            if (_timeToSpawn >= _model.SpawnRate)
             {
+                if (_model.Asteroids.Count >= AsteroidsCollection.MaxCount) return;
+
                 _model.CreateAsteroid(GetNewAsteroidSpecification());
-            }
-
-            _toCreateModelsCount = 0;
-        }
-
-        private void RemoveInactiveAsteroids()
-        {
-            foreach (var model in _inactiveModels)
-            {
-                _model.DestroyAsteroid(model, true, false);
-            }
             
-            _inactiveModels.Clear();
-
-            foreach (var model in _model.ActiveAsteroids)
+                _timeToSpawn = 0;
+            }
+            else
             {
-                if (!model.IsVisibleFromCamera)
-                {
-                    _inactiveModels.Add(model);
-                }
+                _timeToSpawn += deltaTime;
             }
         }
-        
+
         private AsteroidSpecification GetNewAsteroidSpecification()
         {
             var randomChance = Random.Range(0f, 1f);

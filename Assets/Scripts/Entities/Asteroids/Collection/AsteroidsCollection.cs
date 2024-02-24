@@ -7,15 +7,18 @@ namespace Entities.Asteroids.Collection
 {
     public class AsteroidsCollection : IAsteroidsCollection
     {
-        public event Action<AsteroidModel, bool, bool> OnAsteroidDestroyed;
+        public event Action<AsteroidModel> OnAsteroidDestroyed;
         public event Action<AsteroidModel> OnAsteroidCreated;
 
         public readonly Dictionary<string, AsteroidSpecification> Specifications;
-        public readonly List<AsteroidModel> ActiveAsteroids = new();
+        public readonly Dictionary<string, AsteroidModel> Asteroids = new();
 
-        public float SpawnRate { get; private set; } = .5f;
+        public AsteroidModel this[string key] => Asteroids[key];
+        public int Count => Asteroids.Count;
+        public float SpawnRate { get; private set; } = .1f;
         public float SpeedShift { get; private set; }
-        public int MaxCount => 70;
+
+        public const int MaxCount = 50;
 
         public AsteroidsCollection(Dictionary<string, AsteroidSpecification> specifications)
         {
@@ -28,18 +31,24 @@ namespace Entities.Asteroids.Collection
             SpawnRate *= spawnRateShift;
         }
 
-        public void DestroyAsteroid(AsteroidModel model, bool byBorder, bool byShip)
-        {
-            ActiveAsteroids.Remove(model);
-            OnAsteroidDestroyed?.Invoke(model, byBorder, byShip);
-        }
-
         public void CreateAsteroid(AsteroidSpecification specification)
         {
             var newModel = new AsteroidModel(specification, SpeedShift);
-            ActiveAsteroids.Add(newModel);
 
+            Asteroids.Add(newModel.Id, newModel);
             OnAsteroidCreated?.Invoke(newModel);
+        }
+        
+        public void CreateAsteroid(AsteroidModel model)
+        {
+            Asteroids.Add(model.Id, model);
+            OnAsteroidCreated?.Invoke(model);
+        }
+
+        public void DestroyAsteroid(AsteroidModel model)
+        {
+            Asteroids.Remove(model.Id);
+            OnAsteroidDestroyed?.Invoke(model);
         }
     }
 }

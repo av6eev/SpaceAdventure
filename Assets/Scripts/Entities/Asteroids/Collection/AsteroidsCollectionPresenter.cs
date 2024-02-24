@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Entities.Asteroids.Asteroid;
+﻿using Entities.Asteroids.Asteroid;
 using Entities.Asteroids.Pull;
 using Presenter;
 using Session;
+using UnityEngine;
 
 namespace Entities.Asteroids.Collection
 {
@@ -12,8 +12,7 @@ namespace Entities.Asteroids.Collection
         private readonly AsteroidsCollection _model;
         private readonly AsteroidsPullsCollection _pullsCollection;
 
-        private readonly Dictionary<AsteroidModel, AsteroidPresenter> _asteroidsPresenters = new();
-        
+        private readonly PresentersDictionary<AsteroidModel> _asteroidsPresenters = new();
         private AsteroidsCollectionUpdater _updater;
 
         public AsteroidsCollectionPresenter(SessionLocationGameModel gameModel, AsteroidsCollection model, AsteroidsPullsCollection pullsCollection)
@@ -27,10 +26,10 @@ namespace Entities.Asteroids.Collection
         {
             _model.OnAsteroidDestroyed += DestroyAsteroid;
             _model.OnAsteroidCreated += CreateAsteroid;
-
-            _updater = new AsteroidsCollectionUpdater(_gameModel, _model);
             
-            _gameModel.FixedUpdatersEngine.Add(_updater);
+            _updater = new AsteroidsCollectionUpdater(_model);
+            
+            _gameModel.UpdatersEngine.Add(_updater);
         }
 
         public void Dispose()
@@ -38,27 +37,27 @@ namespace Entities.Asteroids.Collection
             _model.OnAsteroidDestroyed -= DestroyAsteroid;
             _model.OnAsteroidCreated -= CreateAsteroid;
             
-            _gameModel.FixedUpdatersEngine.Remove(_updater);
+            _gameModel.UpdatersEngine.Remove(_updater);
 
-            foreach (var presenter in _asteroidsPresenters.Values)
-            {
-                presenter.Dispose();
-            }
-
+            _asteroidsPresenters.Dispose();
             _asteroidsPresenters.Clear();
-        }
-
-        private void DestroyAsteroid(AsteroidModel model, bool byBorder, bool byShip)
-        {
-            _asteroidsPresenters[model].Dispose();
         }
 
         private void CreateAsteroid(AsteroidModel model)
         {
-            var presenter = new AsteroidPresenter(_gameModel, model, _pullsCollection.GetById(model.Specification.Id));
-            presenter.Init();
+            var activeChunks = _gameModel.ChunkCollection.ActiveChunks;
+            model.ChunkId = activeChunks[Random.Range(0, activeChunks.Count)];
             
+            _gameModel.ChunkCollection[model.ChunkId].AddElement(model);
+
+            var presenter = new AsteroidPresenter(_gameModel, model, _pullsCollection[model.Specification.Id]);
+            presenter.Init();
             _asteroidsPresenters.Add(model, presenter);
+        }
+
+        private void DestroyAsteroid(AsteroidModel model)
+        {
+            _asteroidsPresenters.Remove(model);
         }
     }
 }

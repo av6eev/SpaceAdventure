@@ -8,7 +8,7 @@ namespace Entities.Asteroids.Pull
     public class AsteroidsPull : Pull<IAsteroidView>
     {
         private readonly Transform _root;
-        public GameObject Element;
+        public readonly GameObject Element;
 
         private const string RootGoName = "AsteroidsPull";
 
@@ -33,7 +33,6 @@ namespace Entities.Asteroids.Pull
         protected override void ModifyPutObject(IAsteroidView element)
         {
             element.Hide();
-            // element.ResetPosition();
         }
 
         protected override void ModifyGetObject(IAsteroidView element)

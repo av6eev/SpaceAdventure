@@ -1,4 +1,6 @@
 ﻿using AreaBorders;
+using Chunk.Collection;
+using Chunk.Collection.Generate;
 using Presenter;
 using Session.Setup;
 
@@ -36,6 +38,11 @@ namespace Session
             var utilitiesPresenter = new SessionSetupUtilitiesPresenter(_gameModel, _presenters, _view);
             utilitiesPresenter.Init();
             _presenters.Add(utilitiesPresenter);
+            
+            var chunksPresenter = new SessionSetupChunksPresenter(_gameModel, _presenters, _view);
+            chunksPresenter.Init();
+            await chunksPresenter.LoadAwaiter;
+            chunksPresenter.Dispose();
             
             var asteroidsPresenter = new SessionSetupAsteroidsPresenter(_gameModel, _presenters, _view);
             asteroidsPresenter.Init();
