@@ -1,10 +1,11 @@
 ﻿using Awaiter;
-using Chunk.Collection;
 using Presenter;
+using Space;
+using UnityEngine;
 
 namespace Session.Setup
 {
-    public class SessionSetupChunksPresenter : IPresenter
+    public class SessionSetupSpacePresenter : IPresenter
     {
         private readonly SessionLocationGameModel _gameModel;
         private readonly PresentersList _presenters;
@@ -12,7 +13,7 @@ namespace Session.Setup
 
         public readonly CustomAwaiter LoadAwaiter = new();
         
-        public SessionSetupChunksPresenter(SessionLocationGameModel gameModel, PresentersList presenters, ISessionSceneView view)
+        public SessionSetupSpacePresenter(SessionLocationGameModel gameModel, PresentersList presenters, ISessionSceneView view)
         {
             _gameModel = gameModel;
             _presenters = presenters;
@@ -21,12 +22,12 @@ namespace Session.Setup
         
         public async void Init()
         {
-            _gameModel.ChunkCollection = new ChunkCollection(_view.ShipView.Position);
+            _gameModel.SpaceModel = new SpaceModel();
             
-            var chunksPresenter = new ChunkCollectionPresenter(_gameModel, (ChunkCollection)_gameModel.ChunkCollection, _view.ChunkCollectionView);
-            chunksPresenter.Init();
-            await chunksPresenter.LoadAwaiter;
-            _presenters.Add(chunksPresenter);
+            var spacePresenter = new SpacePresenter(_gameModel, (SpaceModel)_gameModel.SpaceModel, _view.SpaceView);
+            spacePresenter.Init();
+            await spacePresenter.LoadAwaiter;
+            _presenters.Add(spacePresenter);
             
             LoadAwaiter.Complete();
         }

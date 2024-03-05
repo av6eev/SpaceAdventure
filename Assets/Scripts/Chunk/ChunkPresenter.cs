@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Biome;
 using Entities;
 using Entities.Asteroids.Asteroid;
 using Entities.Asteroids.Collection;
@@ -25,6 +27,21 @@ namespace Chunk
 
         public void Init()
         {
+            switch (_model.BiomeType)
+            {
+                case BiomeType.Uncertain:
+                    break;
+                case BiomeType.Void:
+                    _view.Disable();
+                    break;
+                case BiomeType.MeteorCircle:
+                    _view.Enable();
+                    break;
+                case BiomeType.InnerMeteorCircle:
+                    _view.Prepare();
+                    break;
+            }    
+            
             _model.RenderingState.OnChanged += ChangeChunkView;
             
             _chunkUpdater = new ChunkUpdater(_model);
@@ -49,10 +66,10 @@ namespace Chunk
                 case ChunkRenderingState.Enabled:
                     _view.Enable();
 
-                    if (_gameModel.AsteroidsCollection == null) return;
+                    if (_gameModel.SpaceModel.AsteroidCollection == null) return;
                     
                     var positions = new Dictionary<Entity, Vector3>(_model.ElementPositions);
-                    var remainCount = AsteroidsCollection.MaxCount - _gameModel.AsteroidsCollection.Count;
+                    var remainCount = AsteroidCollection.MaxCount - _gameModel.SpaceModel.AsteroidCollection.Count;
                     var toCreateCount = positions.Count > remainCount ? remainCount : positions.Count;
                     
                     foreach (var element in positions)
@@ -62,7 +79,7 @@ namespace Chunk
                         if (element.Key is AsteroidModel { IsDisabled: true, IsVisibleFromCamera: false } asteroid)
                         {
                             asteroid.Position.Value = element.Value;
-                            _gameModel.AsteroidsCollection.CreateAsteroid(asteroid);
+                            _gameModel.SpaceModel.AsteroidCollection.CreateAsteroid(asteroid);
                             
                             toCreateCount--;
                         }
@@ -73,7 +90,7 @@ namespace Chunk
                     {
                         if (element is AsteroidModel asteroid)
                         {
-                            _gameModel.AsteroidsCollection.DestroyAsteroid(asteroid);
+                            _gameModel.SpaceModel.AsteroidCollection.DestroyAsteroid(asteroid);
                         }
                     }
                     
@@ -85,7 +102,7 @@ namespace Chunk
                     {
                         if (element is AsteroidModel asteroid)
                         {
-                            _gameModel.AsteroidsCollection.DestroyAsteroid(asteroid);
+                            _gameModel.SpaceModel.AsteroidCollection.DestroyAsteroid(asteroid);
                         }
                     }
                     

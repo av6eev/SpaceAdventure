@@ -2,20 +2,19 @@
 using Entities.Asteroids.Pull;
 using Presenter;
 using Session;
-using UnityEngine;
 
 namespace Entities.Asteroids.Collection
 {
     public class AsteroidsCollectionPresenter : IPresenter
     {
         private readonly SessionLocationGameModel _gameModel;
-        private readonly AsteroidsCollection _model;
+        private readonly AsteroidCollection _model;
         private readonly AsteroidsPullsCollection _pullsCollection;
 
         private readonly PresentersDictionary<AsteroidModel> _asteroidsPresenters = new();
         private AsteroidsCollectionUpdater _updater;
 
-        public AsteroidsCollectionPresenter(SessionLocationGameModel gameModel, AsteroidsCollection model, AsteroidsPullsCollection pullsCollection)
+        public AsteroidsCollectionPresenter(SessionLocationGameModel gameModel, AsteroidCollection model, AsteroidsPullsCollection pullsCollection)
         {
             _gameModel = gameModel;
             _model = model;
@@ -27,9 +26,9 @@ namespace Entities.Asteroids.Collection
             _model.OnAsteroidDestroyed += DestroyAsteroid;
             _model.OnAsteroidCreated += CreateAsteroid;
             
-            _updater = new AsteroidsCollectionUpdater(_model);
+            // _updater = new AsteroidsCollectionUpdater(_model);
             
-            _gameModel.UpdatersEngine.Add(_updater);
+            // _gameModel.UpdatersEngine.Add(_updater);
         }
 
         public void Dispose()
@@ -37,7 +36,7 @@ namespace Entities.Asteroids.Collection
             _model.OnAsteroidDestroyed -= DestroyAsteroid;
             _model.OnAsteroidCreated -= CreateAsteroid;
             
-            _gameModel.UpdatersEngine.Remove(_updater);
+            // _gameModel.UpdatersEngine.Remove(_updater);
 
             _asteroidsPresenters.Dispose();
             _asteroidsPresenters.Clear();
@@ -45,10 +44,7 @@ namespace Entities.Asteroids.Collection
 
         private void CreateAsteroid(AsteroidModel model)
         {
-            var activeChunks = _gameModel.ChunkCollection.ActiveChunks;
-            model.ChunkId = activeChunks[Random.Range(0, activeChunks.Count)];
-            
-            _gameModel.ChunkCollection[model.ChunkId].AddElement(model);
+            _gameModel.SpaceModel.ChunkCollection[model.ChunkId].AddElement(model);
 
             var presenter = new AsteroidPresenter(_gameModel, model, _pullsCollection[model.Specification.Id]);
             presenter.Init();

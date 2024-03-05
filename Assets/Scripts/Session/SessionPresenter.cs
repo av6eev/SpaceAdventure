@@ -39,10 +39,10 @@ namespace Session
             utilitiesPresenter.Init();
             _presenters.Add(utilitiesPresenter);
             
-            var chunksPresenter = new SessionSetupChunksPresenter(_gameModel, _presenters, _view);
-            chunksPresenter.Init();
-            await chunksPresenter.LoadAwaiter;
-            chunksPresenter.Dispose();
+            var spacePresenter = new SessionSetupSpacePresenter(_gameModel, _presenters, _view);
+            spacePresenter.Init();
+            await spacePresenter.LoadAwaiter;
+            spacePresenter.Dispose();
             
             var asteroidsPresenter = new SessionSetupAsteroidsPresenter(_gameModel, _presenters, _view);
             asteroidsPresenter.Init();

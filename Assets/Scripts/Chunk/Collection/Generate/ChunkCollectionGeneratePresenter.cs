@@ -1,7 +1,5 @@
-﻿using Awaiter;
-using Presenter;
+﻿using Presenter;
 using Session;
-using UnityEngine;
 
 namespace Chunk.Collection.Generate
 {
@@ -13,8 +11,6 @@ namespace Chunk.Collection.Generate
 
         private readonly PresentersDictionary<string> _chunkPresenters = new();
 
-        public readonly CustomAwaiter LoadAwaiter = new();
-        
         public ChunkCollectionGeneratePresenter(SessionLocationGameModel gameModel, ChunkCollection model, IChunkCollectionView view)
         {
             _gameModel = gameModel;
@@ -26,39 +22,17 @@ namespace Chunk.Collection.Generate
         {
             _model.OnChunkAdded += CreateChunk;
             _model.OnChunkRemoved += RemoveChunk;
-            
-            GenerateInitialChunks();
-
-            LoadAwaiter.Complete();
         }
 
         public void Dispose()
         {
             _model.OnChunkAdded -= CreateChunk;
             _model.OnChunkRemoved -= RemoveChunk;
-            
-            LoadAwaiter.Dispose();
-        }
-
-        private void GenerateInitialChunks()
-        {
-            var renderDistance = GameConst.ForwardDrawDistance;
-            
-            for (var x = _model.StartPoint.x - renderDistance; x <= _model.StartPoint.x + renderDistance; x++)
-            {
-                for (var z = _model.StartPoint.z - renderDistance; z <= _model.StartPoint.z + renderDistance; z++)
-                {
-                    if ((int)(x % ChunkCollection.ChunkSize.x) == 0 && (int)(z % ChunkCollection.ChunkSize.y) == 0)
-                    {
-                        _model.AddChunk(new Vector2(x, z));
-                    }
-                }   
-            }
         }
 
         private void CreateChunk(ChunkModel chunkModel)
         {
-            var chunkPresenter = new ChunkPresenter(_gameModel, chunkModel, _view.InstantiateChunkView(chunkModel.Position, $"{chunkModel.Id}"));                    
+            var chunkPresenter = new ChunkPresenter(_gameModel, chunkModel, _view.InstantiateChunkView(chunkModel.Position, $"{chunkModel.Id}-{chunkModel.BiomeType}"));                    
             chunkPresenter.Init();
             _chunkPresenters.Add(chunkModel.Id, chunkPresenter);
         }

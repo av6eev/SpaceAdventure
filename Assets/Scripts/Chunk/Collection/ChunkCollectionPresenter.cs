@@ -1,5 +1,4 @@
-﻿using Awaiter;
-using Chunk.Collection.Generate;
+﻿using Chunk.Collection.Generate;
 using Presenter;
 using Session;
 
@@ -13,7 +12,6 @@ namespace Chunk.Collection
 
         private readonly PresentersList _presenters = new();
         private ChunkCollectionUpdater _collectionUpdater;
-        public readonly CustomAwaiter LoadAwaiter = new();
         
         public ChunkCollectionPresenter(SessionLocationGameModel gameModel, ChunkCollection model, IChunkCollectionView view)
         {
@@ -22,27 +20,22 @@ namespace Chunk.Collection
             _view = view;
         }
         
-        public async void Init()
+        public void Init()
         {
-            _collectionUpdater = new ChunkCollectionUpdater(_model, _gameModel.ShipCameraView);
-            _gameModel.UpdatersEngine.Add(_collectionUpdater);
+            // _collectionUpdater = new ChunkCollectionUpdater(_model, _gameModel.ShipCameraView);
+            // _gameModel.UpdatersEngine.Add(_collectionUpdater);
 
             var generatePresenter = new ChunkCollectionGeneratePresenter(_gameModel, _model, _view);
             generatePresenter.Init();
-            await generatePresenter.LoadAwaiter;
             _presenters.Add(generatePresenter);
-
-            LoadAwaiter.Complete();
         }
 
         public void Dispose()
         {
-            _gameModel.UpdatersEngine.Remove(_collectionUpdater);
+            // _gameModel.UpdatersEngine.Remove(_collectionUpdater);
             
             _presenters.Dispose();
             _presenters.Clear();
-            
-            LoadAwaiter.Dispose();
         }
     }
 }

@@ -20,10 +20,4 @@ namespace Home.Interface.Slider
             CardModels[index].IsActive = true;
         }
     }
-
-    public interface IHomeSliderModel
-    {
-        int Current { get; }
-        void Select(int index);
-    }
 }

@@ -1,6 +1,42 @@
 # Change Log
 Все изменения этого проекта будут задокументированы в этом файле.
 
+## [0.0.5] - 05.03.2024
+### Добавлено:
+* Voronoi. Множество классов для генерации точек на плоскости с использованием алгоритма Форчуна.
+* Biome и IBiome. Абстрактный класс и его интерфейс для всех биомов в игре. Предоставляет id и тип биома, а так же базовый конструктор, принимающий id.
+* BiomeConst. Статический класс для шансов появления различных биомов и их "стоимости".
+* BiomeType. Список типов биомов в игре.
+* BiomeCollection. Хранит все биомы в игре по их id. Имеет методы для добавления биома и получения типа биома по его id.
+  * MeteorCircleBiome. Биом кольца метеоритов.
+  * InnerMeteorCircleBiome. Биом внутри кольца метеоритов.
+  * VoidBiome. Пустой биом.
+* BiomeCollectionPresenter. Presenter для BiomeCollection. Пока что является пустым.
+* MVP Space связка.
+  * SpaceModel. Верхнеуровневая модель, хранящая в себе коллекции биомов, чанков и астероидов.
+  * SpacePresenter. Presenter, запускающий все необходимые presenter'ы: ChunkCollectionPresenter, BiomeCollectionPresenter и SpaceGenerateLayoutPresenter.
+    * SpaceGenerateLayoutPresenter. Presenter, отвечающий за загрузку ранее сгенерированной карты.
+  * SpaceView. Верхнеуровневая view, хранящая IChunkCollectionView.
+* SpaceMapGraph. Хранит в себе точки по центрам их позиций и различные биомы по их id.
+* SpaceMapNode. Представляет сущность сгенерированной точки и хранит в себе тип и id биома, центральную позицию и дополнительную информацию.
+* SpaceMapGenerator. Статический класс для генерации карты.
+* SpaceMapLoader. Статический класс для загрузки карты из сохранения.
+* SpaceMapSaver. Статический класс для сохранения карты.
+* SpaceMapPreviewGenerator. Класс для непосредственной генерации карты с использованием алгоритма Форчуна.
+* SpaceMapPreviewGeneratorEditor. Класс для кастомного эдитора, который добавляет классу SpaceMapPreviewGenerator кнопки для генерации, сохранения и загрузки карты.
+
+### Изменено:
+* GameConst. Класс теперь тоже является статичным.
+* SavingElementsKeys. Добавлены новые ключи для получения данных о сохраненной генерации карты.
+* ChunkPresenter. Изменения связаны с переносом AsteroidCollection из SessionLocationGameModel в ISpaceModel.
+* ChunkModel. Добавлены поля для хранения id и типа биома, в котором находится чанк.
+* ChunkCollection. Свойство ActiveChunks изменено на метод GetActiveChunks. Удалены поля для сида мира и точки спавна. Изменен метод добавления чанка и удален конструктор.
+* ChunkCollectionPresenter. Больше не является ожидаемым. Временно закомментирован запуск ChunkCollectionUpdater'a.
+* ISessionSceneView. Добавлен интерфейс ISpaceView и убран IChunkCollectionView.
+* SessionLocationGameModel. Добавлен интерфейс ISpaceModel. Интерфейсы IChunkCollection и IAsteroidCollection перенесены в ISpaceModel.
+* SessionSetupChunksPresenter. Переименован в SessionSetupSpacePresenter.
+* SessionPresenter. Изменения связаны с переименованием SessionSetupChunksPresenter.
+
 ## [0.0.5] - 24.02.2024
 ### Добавлено:
 * MVP ChunkCollection связка.

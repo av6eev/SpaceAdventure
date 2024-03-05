@@ -2,6 +2,7 @@
 using Entities.Ship;
 using Presenter;
 using UnityEngine;
+using Utilities;
 
 namespace Session.Setup
 {
@@ -22,7 +23,7 @@ namespace Session.Setup
         
         public async void Init()
         {
-            var currentShipId = PlayerPrefs.GetString(SavingElementsKeys.CurrentShipId);
+            var currentShipId = PlayerPrefs.GetString(SavingElementsKeys.CurrentShipIdKey);
             var shipSpecification = _gameModel.Specifications.ShipSpecifications[currentShipId];
             var shipPrefabKey = shipSpecification.PrefabKey3D;
             var go = _gameModel.LoadObjectsModel.Load<GameObject>(shipPrefabKey);

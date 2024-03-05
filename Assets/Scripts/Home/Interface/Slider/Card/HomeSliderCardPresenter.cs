@@ -1,6 +1,7 @@
 ﻿using Loader.Scene;
 using Presenter;
 using UnityEngine;
+using Utilities;
 
 namespace Home.Interface.Slider.Card
 {
@@ -36,7 +37,7 @@ namespace Home.Interface.Slider.Card
 
             if (_view.GetId() == "play_card")
             {
-                if (PlayerPrefs.GetString(SavingElementsKeys.CurrentShipId) == string.Empty)
+                if (PlayerPrefs.GetString(SavingElementsKeys.CurrentShipIdKey) == string.Empty)
                 {
                     Debug.LogError("No ships have been selected yet!");
                     return;

@@ -32,7 +32,7 @@ namespace Entities.Asteroids.Asteroid
             
             if (_model.Position.Value == Vector3.zero)
             {
-                _view.Position = GetRandomPointInChunk();
+                // _view.Position = GetRandomPointInChunk();
                 _model.Position.Value = _view.Position;
             }
             else
@@ -60,16 +60,16 @@ namespace Entities.Asteroids.Asteroid
             _pull.Put(_view);
         }
 
-        private Vector3 GetRandomPointInChunk()
-        {
-            var chunkPosition = _gameModel.ChunkCollection.Chunks[_model.ChunkId].Position;
-            var sizedChunkPosition = chunkPosition + new Vector2(ChunkCollection.ChunkSize.x, ChunkCollection.ChunkSize.z);
-            
-            var xPoint = Random.Range(chunkPosition.x, sizedChunkPosition.x);
-            var yPoint = _gameModel.ShipCameraView.GetRandomPointInCameraHeight();
-            var zPoint = Random.Range(chunkPosition.y, sizedChunkPosition.y);
-            
-            return new Vector3(xPoint, yPoint, zPoint);
-        }
+        // private Vector3 GetRandomPointInChunk()
+        // {
+        //     var chunkPosition = _gameModel.ChunkCollection.Chunks[_model.ChunkId].Position;
+        //     var sizedChunkPosition = chunkPosition + new Vector2(ChunkCollection.ChunkSize.x, ChunkCollection.ChunkSize.z);
+        //     
+        //     var xPoint = Random.Range(chunkPosition.x, sizedChunkPosition.x);
+        //     var yPoint = _gameModel.ShipCameraView.GetRandomPointInCameraHeight();
+        //     var zPoint = Random.Range(chunkPosition.y, sizedChunkPosition.y);
+        //     
+        //     return new Vector3(xPoint, yPoint, zPoint);
+        // }
     }
 }

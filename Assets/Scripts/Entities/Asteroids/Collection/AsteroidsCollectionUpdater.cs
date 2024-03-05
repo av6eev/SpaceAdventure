@@ -6,12 +6,12 @@ namespace Entities.Asteroids.Collection
 {
     public class AsteroidsCollectionUpdater : IUpdater
     {
-        private readonly AsteroidsCollection _model;
+        private readonly AsteroidCollection _model;
         
         private int _toCreateCount;
         private float _timeToSpawn;
 
-        public AsteroidsCollectionUpdater(AsteroidsCollection model)
+        public AsteroidsCollectionUpdater(AsteroidCollection model)
         {
             _model = model;
         }
@@ -25,8 +25,11 @@ namespace Entities.Asteroids.Collection
         {
             if (_timeToSpawn >= _model.SpawnRate)
             {
-                if (_model.Asteroids.Count >= AsteroidsCollection.MaxCount) return;
-
+                if (_model.Asteroids.Count >= AsteroidCollection.MaxCount) return;
+                
+                // var activeChunks = _gameModel.ChunkCollection.GetActiveChunks();
+                // model.ChunkId = activeChunks[Random.Range(0, activeChunks.Count)];
+                
                 _model.CreateAsteroid(GetNewAsteroidSpecification());
             
                 _timeToSpawn = 0;

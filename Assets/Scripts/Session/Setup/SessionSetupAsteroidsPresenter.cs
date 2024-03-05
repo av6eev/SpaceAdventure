@@ -51,8 +51,8 @@ namespace Session.Setup
                 }
             }
 
-            _gameModel.AsteroidsCollection = new AsteroidsCollection(_gameModel.Specifications.AsteroidSpecifications.GetSpecifications());
-            var asteroidsCollectionPresenter = new AsteroidsCollectionPresenter(_gameModel, (AsteroidsCollection)_gameModel.AsteroidsCollection, pullCollection);
+            _gameModel.SpaceModel.AsteroidCollection = new AsteroidCollection(_gameModel.Specifications.AsteroidSpecifications.GetSpecifications());
+            var asteroidsCollectionPresenter = new AsteroidsCollectionPresenter(_gameModel, (AsteroidCollection)_gameModel.SpaceModel.AsteroidCollection, pullCollection);
             asteroidsCollectionPresenter.Init();
             _presenters.Add(asteroidsCollectionPresenter);
             

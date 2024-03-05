@@ -2,6 +2,7 @@
 using Loader.Object;
 using Presenter;
 using UnityEngine;
+using Utilities;
 
 namespace Dock.Interface.Slider
 {
@@ -71,7 +72,7 @@ namespace Dock.Interface.Slider
                 return;
             }
 
-            if (card.Specification.Id != PlayerPrefs.GetString(SavingElementsKeys.CurrentShipId))
+            if (card.Specification.Id != PlayerPrefs.GetString(SavingElementsKeys.CurrentShipIdKey))
             {
                 _gameModel.SaveModel.SaveCurrentShipId(card.Specification.Id);
             }

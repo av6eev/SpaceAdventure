@@ -5,7 +5,7 @@ using Specifications.Asteroid;
 
 namespace Entities.Asteroids.Collection
 {
-    public class AsteroidsCollection : IAsteroidsCollection
+    public class AsteroidCollection : IAsteroidCollection
     {
         public event Action<AsteroidModel> OnAsteroidDestroyed;
         public event Action<AsteroidModel> OnAsteroidCreated;
@@ -20,7 +20,7 @@ namespace Entities.Asteroids.Collection
 
         public const int MaxCount = 50;
 
-        public AsteroidsCollection(Dictionary<string, AsteroidSpecification> specifications)
+        public AsteroidCollection(Dictionary<string, AsteroidSpecification> specifications)
         {
             Specifications = specifications;
         }

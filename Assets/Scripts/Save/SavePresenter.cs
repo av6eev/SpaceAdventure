@@ -1,5 +1,6 @@
 ﻿using Presenter;
 using UnityEngine;
+using Utilities;
 
 namespace Save
 {
@@ -26,8 +27,8 @@ namespace Save
 
         private void SaveShipId(string id)
         {
-            PlayerPrefs.SetString(SavingElementsKeys.CurrentShipId, id);
-            Debug.Log($"{id} saved to: {SavingElementsKeys.CurrentShipId}");
+            PlayerPrefs.SetString(SavingElementsKeys.CurrentShipIdKey, id);
+            Debug.Log($"{id} saved to: {SavingElementsKeys.CurrentShipIdKey}");
         }
     }
 }

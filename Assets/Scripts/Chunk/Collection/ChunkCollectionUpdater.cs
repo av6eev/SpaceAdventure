@@ -36,10 +36,10 @@ namespace Chunk.Collection
         {
             if (!_isActiveChunkChange) return;
             
-            foreach (var position in _toCreateChunkPositions)
-            {
-                _chunkCollection.AddChunk(position);
-            }
+            // foreach (var position in _toCreateChunkPositions)
+            // {
+            //     _chunkCollection.Add(position);
+            // }
             
             _toCreateChunkPositions.Clear();
             
