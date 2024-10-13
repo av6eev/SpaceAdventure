@@ -22,8 +22,8 @@ namespace Chunk.Collection
         
         public void Init()
         {
-            // _collectionUpdater = new ChunkCollectionUpdater(_model, _gameModel.ShipCameraView);
-            // _gameModel.UpdatersEngine.Add(_collectionUpdater);
+            _collectionUpdater = new ChunkCollectionUpdater(_model, _gameModel.ShipCameraView);
+            _gameModel.UpdatersEngine.Add(_collectionUpdater);
 
             var generatePresenter = new ChunkCollectionGeneratePresenter(_gameModel, _model, _view);
             generatePresenter.Init();
@@ -32,7 +32,7 @@ namespace Chunk.Collection
 
         public void Dispose()
         {
-            // _gameModel.UpdatersEngine.Remove(_collectionUpdater);
+            _gameModel.UpdatersEngine.Remove(_collectionUpdater);
             
             _presenters.Dispose();
             _presenters.Clear();

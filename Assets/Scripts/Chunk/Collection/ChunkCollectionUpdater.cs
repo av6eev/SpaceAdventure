@@ -27,9 +27,9 @@ namespace Chunk.Collection
         
         public void Update(float deltaTime)
         {
-            GenerateAdditionalChunksUpdate();
+            // GenerateAdditionalChunksUpdate();
             RenderingUpdate();
-            RemoveFarChunksUpdate(deltaTime);
+            // RemoveFarChunksUpdate(deltaTime);
         }
 
         private void GenerateAdditionalChunksUpdate()
